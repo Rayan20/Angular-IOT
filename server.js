@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express(),
       bodyParser = require("body-parser");
-      port = 80;
+      port = process.env.PORT || 3000;
 
 const users = [];
 
