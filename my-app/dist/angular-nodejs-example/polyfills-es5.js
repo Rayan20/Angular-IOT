@@ -1,3 +1,9 @@
+function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -13161,7 +13167,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       var symbolPrototype = SymbolWrapper.prototype = NativeSymbol.prototype;
       symbolPrototype.constructor = SymbolWrapper;
       var symbolToString = symbolPrototype.toString;
-      var native = String(NativeSymbol('test')) == 'Symbol(test)';
+
+      var _native = String(NativeSymbol('test')) == 'Symbol(test)';
+
       var regexp = /^Symbol\((.*)\)[^)]+$/;
       defineProperty(symbolPrototype, 'description', {
         configurable: true,
@@ -13169,7 +13177,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var symbol = isObject(this) ? this.valueOf() : this;
           var string = symbolToString.call(symbol);
           if (has(EmptyStringDescriptionStore, symbol)) return '';
-          var desc = native ? string.slice(7, -1) : string.replace(regexp, '$1');
+          var desc = _native ? string.slice(7, -1) : string.replace(regexp, '$1');
           return desc === '' ? undefined : desc;
         }
       });
@@ -16070,12 +16078,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                 reject(error);
               }
 
-              var _iteratorNormalCompletion = true;
-              var _didIteratorError = false;
-              var _iteratorError = undefined;
+              var _iterator = _createForOfIteratorHelper(values),
+                  _step;
 
               try {
-                for (var _iterator = values[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                for (_iterator.s(); !(_step = _iterator.n()).done;) {
                   var value = _step.value;
 
                   if (!isThenable(value)) {
@@ -16085,18 +16092,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                   value.then(onResolve, onReject);
                 }
               } catch (err) {
-                _didIteratorError = true;
-                _iteratorError = err;
+                _iterator.e(err);
               } finally {
-                try {
-                  if (!_iteratorNormalCompletion && _iterator.return != null) {
-                    _iterator.return();
-                  }
-                } finally {
-                  if (_didIteratorError) {
-                    throw _iteratorError;
-                  }
-                }
+                _iterator.f();
               }
 
               return promise;
@@ -16140,9 +16138,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               var unresolvedCount = 2;
               var valueIndex = 0;
               var resolvedValues = [];
-              var _iteratorNormalCompletion2 = true;
-              var _didIteratorError2 = false;
-              var _iteratorError2 = undefined;
+
+              var _iterator2 = _createForOfIteratorHelper(values),
+                  _step2;
 
               try {
                 var _loop2 = function _loop2() {
@@ -16182,23 +16180,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                   valueIndex++;
                 };
 
-                for (var _iterator2 = values[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+                for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
                   _loop2();
                 } // Make the unresolvedCount zero-based again.
 
               } catch (err) {
-                _didIteratorError2 = true;
-                _iteratorError2 = err;
+                _iterator2.e(err);
               } finally {
-                try {
-                  if (!_iteratorNormalCompletion2 && _iterator2.return != null) {
-                    _iterator2.return();
-                  }
-                } finally {
-                  if (_didIteratorError2) {
-                    throw _iteratorError2;
-                  }
-                }
+                _iterator2.f();
               }
 
               unresolvedCount -= 2;
@@ -19047,7 +19036,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
   /***/
   function _(module, exports, __webpack_require__) {
     __webpack_require__(
-    /*! /Users/bhargavbachina/Projects/angular-nodejs-example/my-app/node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/es5-polyfills.js */
+    /*! /Users/yangju/projects/bitbucket/Angular-IOT/my-app/node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/es5-polyfills.js */
     "./node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/es5-polyfills.js");
 
     __webpack_require__(
@@ -19055,7 +19044,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     "./node_modules/zone.js/dist/zone-legacy.js");
 
     module.exports = __webpack_require__(
-    /*! /Users/bhargavbachina/Projects/angular-nodejs-example/my-app/src/polyfills.ts */
+    /*! /Users/yangju/projects/bitbucket/Angular-IOT/my-app/src/polyfills.ts */
     "./src/polyfills.ts");
     /***/
   }
