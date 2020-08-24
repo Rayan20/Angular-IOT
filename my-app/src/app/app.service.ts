@@ -1,21 +1,20 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class AppService {
 
-  constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient) {
+    }
 
-  rootURL = '/api';
-
-  getUsers() {
-    return this.http.get(this.rootURL + '/users');
-  }
-
-  addUser(user: any) {
-    return this.http.post(this.rootURL + '/user', {user});
-  }
+    sendMSG(value: any) {
+        console.log(value);
+        const headers = {'Content-Type':'application/json'};
+        //const body = {"name":"me"};
+        return this.http.post<any>('/api/user', value, { headers });
+        //return this.http.post('/api/user', {"name":"me"});
+    }
 
 }

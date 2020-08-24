@@ -1,27 +1,82 @@
 const express = require('express');
+var request = require('request');
+var clientIP;
+var message;
 const app = express(),
-      bodyParser = require("body-parser");
-      port = process.env.PORT || 3000;
+    bodyParser = require("body-parser");
+port = process.env.PORT || 3001;
 
 const users = [];
 
 app.use(bodyParser.json());
-app.use(express.static(process.cwd()+"/my-app/dist/angular-nodejs-example/"));
+app.use(express.static(process.cwd() + "/my-app/dist/angular-nodejs-example/"));
 
 app.get('/api/users', (req, res) => {
-  res.json(users);
+    console.log("/api/user get invoked");
+    res.json(users);
 });
 
 app.post('/api/user', (req, res) => {
-  const user = req.body.user;
-  users.push(user);
-  res.json("user addedd");
+    console.log("/api/user post got hit");
+    message = req.body;
+    console.log(message);
+
+    request.post({
+        url: 'http://' + clientIP + ':8080/lcd_print',
+        json: {
+            message: message
+        },
+        timeout: 5000
+
+    }, function (err, response) {
+
+        if (err) {
+            console.log(err);
+            if (err.code === 'EHOSTUNREACH') {
+                return res.send("500");
+            } else {
+                return res.send("500");
+
+            }
+        } else {
+
+            if (response.statusCode == 200) {
+                console.log("status code=" + response.statusCode);
+                console.log("status code=" + response.statusMessage);
+                res.send({
+                    'code': 200,
+                    'data': {
+                        'r': r, 'b': b, 'g': g
+                    },
+                    'status': response.headers['content-type']
+                });
+
+            } else if (response.statusCode !== 200) {
+                console.log("non 200 status code=" + response.statusCode);
+                res.send({
+                    'code': 200,
+                    'data': {
+                        'r': r, 'b': b, 'g': g
+                    },
+                    'status': response.headers['content-type']
+                });
+            }
+        }
+    })
 });
 
-app.get('/', (req,res) => {
-  res.sendFile(process.cwd()+"/my-app/dist/angular-nodejs-example/index.html")
+app.get('/', (req, res) => {
+    res.sendFile(process.cwd() + "/my-app/dist/angular-nodejs-example/index.html")
 });
 
 app.listen(port, () => {
-    console.log(`Server listening on the port::${port}`);
+    console.log(`Example app listening at http://localhost:${port}`)
 });
+
+app.get('/api/led_control/client_ip', (req, res) => {
+    var ip = req.params.ip;
+    clientIP = ip;
+    res.send(200);
+    console.log("Received IP is: " + ip);
+});
+
