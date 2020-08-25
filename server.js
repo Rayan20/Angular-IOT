@@ -27,7 +27,7 @@ app.post('/api/user', (req, res) => {
         json: {
             message: message
         },
-        timeout: 5000
+        timeout: 7000
 
     }, function (err, response) {
 
