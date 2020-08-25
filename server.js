@@ -1,6 +1,6 @@
 const express = require('express');
 var request = require('request');
-var clientIP = 1;
+global.clientIP = '1';
 var monitor;
 const app = express(),
     bodyParser = require("body-parser");
@@ -64,6 +64,6 @@ app.get('/api/led_control/client_ip/:ip', (req, res) => {
     var ip = req.params.ip;
     clientIP = ip;
     res.send(200);
-    console.log("Received IP is: " + ip);
+    console.log("Received IP is: " + clientIP);
 });
 
