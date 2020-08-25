@@ -4,7 +4,7 @@ var clientIP;
 var message;
 const app = express(),
     bodyParser = require("body-parser");
-port = process.env.PORT || 3001;
+port = process.env.PORT || 3000;
 
 const users = [];
 
@@ -73,7 +73,7 @@ app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`)
 });
 
-app.get('/api/led_control/client_ip', (req, res) => {
+app.get('/api/led_control/client_ip/:ip', (req, res) => {
     var ip = req.params.ip;
     clientIP = ip;
     res.send(200);

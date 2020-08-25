@@ -1,6 +1,6 @@
 {
   "/api": {
-    "target": "http://angular-iot.herokuapp.com",
+    "target": "http://angular-iot.com",
     "secure": false
   }
 }
