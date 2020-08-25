@@ -1,7 +1,7 @@
 const express = require('express');
 var request = require('request');
-var clientIP;
-var message;
+var clientIP = 1;
+var monitor;
 const app = express(),
     bodyParser = require("body-parser");
 port = process.env.PORT || 3000;
@@ -18,11 +18,12 @@ app.get('/api/users', (req, res) => {
 
 app.post('/api/user', (req, res) => {
     console.log("/api/user post got hit");
-    message = req.body;
+    monitor = req.body;
+    var message = monitor.monitor;
     console.log(message);
 
     request.post({
-        url: 'http://' + clientIP + ':8080/lcd_print',
+        url: 'http:// ' + clientIP + ':8080/lcd_print',
         json: {
             message: message
         },
@@ -43,23 +44,9 @@ app.post('/api/user', (req, res) => {
             if (response.statusCode == 200) {
                 console.log("status code=" + response.statusCode);
                 console.log("status code=" + response.statusMessage);
-                res.send({
-                    'code': 200,
-                    'data': {
-                        'r': r, 'b': b, 'g': g
-                    },
-                    'status': response.headers['content-type']
-                });
 
             } else if (response.statusCode !== 200) {
                 console.log("non 200 status code=" + response.statusCode);
-                res.send({
-                    'code': 200,
-                    'data': {
-                        'r': r, 'b': b, 'g': g
-                    },
-                    'status': response.headers['content-type']
-                });
             }
         }
     })
