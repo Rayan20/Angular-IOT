@@ -32,7 +32,7 @@ export class AppComponent implements OnDestroy {
             if (JSON.parse(data) === 500) {
                 this.message = "LCD may not be online";
             } else {
-                this.message = JSON.parse(data);
+                this.message = "LCD updated"
             }
             this.userForm.reset();
         });
