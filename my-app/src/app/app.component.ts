@@ -16,6 +16,8 @@ export class AppComponent implements OnDestroy {
     }
 
     title = 'angular-iot';
+    message = '';
+    public isVisible: boolean = false;
 
     userForm = new FormGroup({
         monitor: new FormControl('', Validators.nullValidator && Validators.required),
@@ -27,9 +29,21 @@ export class AppComponent implements OnDestroy {
         console.log(value);
         this.appService.sendMSG(value).pipe(takeUntil(this.destroy$)).subscribe(data => {
             console.log('message:', data);
-            console.log(data);
+            if (JSON.parse(data) === 500) {
+                this.message = "LCD may not be online";
+            } else {
+                this.message = JSON.parse(data);
+            }
             this.userForm.reset();
         });
+    }
+
+    showAlert() : void {
+        if (this.isVisible) {
+            return;
+        }
+        this.isVisible = true;
+        setTimeout(()=> this.isVisible = false,2500)
     }
 
     ngOnDestroy() {

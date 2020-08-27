@@ -1,16 +1,31 @@
 <app-header></app-header>
-<div class="container text-center">
-    <br>
-    <form [formGroup]="userForm" (ngSubmit)="onSubmit(userForm.value)" required>
-            <div class="form-group">
-                <br>
-                <label for="monitor">Display your message!</label>
-                <br>
-                <input style="border: black solid 2px" type="text" class="form-control" name="monitor" formControlName="monitor" id="monitor" placeholder="Type your message here!">
 
-            </div>
-        <button type="submit" [disabled]="!userForm.valid" class="btn btn-danger">Send</button>
+<body>
+<div class="container text-center">
+    <div class="alert" [class.visible]="isVisible">
+        {{message}}
+    </div>
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit(userForm.value)" required>
+        <div class="form-group">
+            <label for="monitor">Display your message!</label>
+            <br>
+            <input style="border: black solid 2px" type="text" class="form-control" name="monitor"
+                   formControlName="monitor" id="monitor" placeholder="Type your message here!">
+
+        </div>
+        <button type="submit" (click)="showAlert()" [disabled]="!userForm.valid" class="btn btn-danger">Send</button>
     </form>
 </div>
+
+</body>
+<script src="/node_modules/angular/angular.js"></script>
+<script src="/node_modules/angular-aria/angular-aria.js"></script>
+<script src="/node_modules/angular-animate/angular-animate.js"></script>
+<script src="/node_modules/angular-messages/angular-messages.js"></script>
+<script src="/node_modules/angular-material/angular-material.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+
+
 
 

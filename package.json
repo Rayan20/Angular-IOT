@@ -22,11 +22,13 @@
   "homepage": "https://github.com/bbachi/angular-nodejs-example#readme",
   "dependencies": {
     "angular": "^1.8.0",
+    "angular-material": "^1.2.0",
     "body-parser": "~1.17.1",
     "boostrap": "^2.0.0",
     "cookie-parser": "^1.4.5",
     "debug": "~2.6.3",
     "express": "~4.15.2",
+    "jquery": "^3.5.1",
     "request": "^2.88.2",
     "tslint": "^6.1.3"
   },
