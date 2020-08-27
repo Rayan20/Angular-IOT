@@ -44,7 +44,7 @@ app.post('/api/user', (req, res) => {
             if (response.statusCode == 200) {
                 console.log("status code=" + response.statusCode);
                 console.log("status code=" + response.statusMessage);
-                return res.json({message: "LCD updated"});
+                return res.send({message: "LCD updated"});
 
             } else if (response.statusCode !== 200) {
                 console.log("non 200 status code=" + response.statusCode);
