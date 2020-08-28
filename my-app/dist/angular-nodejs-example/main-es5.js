@@ -473,7 +473,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         value: function sendMSG(value) {
           console.log(value);
           var headers = {
-            'Content-Type': 'application/json'
+            'Content-Type': 'text'
           };
           return this.http.post('/api/user', value, {
             headers: headers
