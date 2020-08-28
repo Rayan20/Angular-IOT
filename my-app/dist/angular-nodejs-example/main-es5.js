@@ -467,10 +467,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           console.log(value);
           var httpOptions = {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
-              "Content-Type": "text/html"
+              "Content-Type": "application/json"
             })
           };
-          return this.http.post('/api/user', value, httpOptions); //return this.http.post<any>('/api/user',value, { headers }).pipe(tap(_ => console.log("received")));
+          return this.http.post('/api/user', JSON.stringify(value), httpOptions); //return this.http.post<any>('/api/user',value, { headers }).pipe(tap(_ => console.log("received")));
         }
       }]);
 

@@ -13,10 +13,10 @@ export class AppService {
         console.log(value);
         const httpOptions = {
             headers: new HttpHeaders({
-                "Content-Type": "text/html"
+                "Content-Type": "application/json"
             })
         };
-        return this.http.post<any>('/api/user', value, httpOptions);
+        return this.http.post<any>('/api/user', JSON.stringify(value), httpOptions);
         //return this.http.post<any>('/api/user',value, { headers }).pipe(tap(_ => console.log("received")));
     }
 
