@@ -11,7 +11,7 @@ export class AppService {
 
     sendMSG(value: any) {
         console.log(value);
-        const headers = {'Content-Type':'application/json', responseType: 'json'};
+        const headers = {'Content-Type':'application/json'};
         return this.http.post<any>('/api/user', value, { headers });
     }
 
