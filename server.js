@@ -30,13 +30,14 @@ app.post('/api/user', (req, res) => {
         timeout: 5000
 
     }, function (err, response) {
-
+        res.header('Access-Control-Allow-Origin','*');
+        res.header("Content-Type", "application/json");
         if (err) {
             console.log(err);
             if (err.code === 'EHOSTUNREACH') {
-                return res.send("LCD may not be online");
+                return res.send({"message":"LCD may not be online"});
             } else {
-                return res.send("LCD may not be online");
+                return res.send({"message":"LCD may not be online"});
 
             }
         } else {
@@ -44,7 +45,7 @@ app.post('/api/user', (req, res) => {
             if (response.statusCode == 200) {
                 console.log("status code=" + response.statusCode);
                 console.log("status code=" + response.statusMessage);
-                return res.send("LCD updated");
+                return res.send({"message":"LCD is updated"});
 
             } else if (response.statusCode !== 200) {
                 console.log("non 200 status code=" + response.statusCode);

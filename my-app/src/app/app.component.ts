@@ -10,7 +10,7 @@ import {Subject} from 'rxjs';
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnDestroy {
+export class AppComponent {
 
     constructor(private appService: AppService) {
     }
@@ -27,11 +27,18 @@ export class AppComponent implements OnDestroy {
 
     onSubmit(value) {
         console.log(value);
-        this.appService.sendMSG(value).pipe(takeUntil(this.destroy$)).subscribe(data => {
-            console.log('message:', data);
-            this.message = data;
-            this.userForm.reset();
+        this.appService.sendMSG(value).subscribe(data => {
+            console.log('message:' + JSON.stringify(data));
+            if(data) {
+                this.message = data.message;
+                this.userForm.reset();
+            }
+            else{
+                console.log('data is null');
+            }
         });
+        //this.appService.sendMSG(value);
+
     }
 
     showAlert() : void {
@@ -42,8 +49,8 @@ export class AppComponent implements OnDestroy {
         setTimeout(()=> this.isVisible = false,2500)
     }
 
-    ngOnDestroy() {
-        this.destroy$.next(true);
-        this.destroy$.unsubscribe();
-    }
+    // ngOnDestroy() {
+    //     this.destroy$.next(true);
+    //     this.destroy$.unsubscribe();
+    // }
 }

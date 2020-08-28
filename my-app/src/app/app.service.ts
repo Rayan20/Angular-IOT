@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Injectable({
     providedIn: 'root'
@@ -11,8 +11,13 @@ export class AppService {
 
     sendMSG(value: any) {
         console.log(value);
-        const headers = {'Content-Type':'application/json'};
-        return this.http.post<any>('/api/user', value, { headers });
+        const httpOptions = {
+            headers: new HttpHeaders({
+                "Content-Type": "text/html"
+            })
+        };
+        return this.http.post<any>('/api/user', value, httpOptions);
+        //return this.http.post<any>('/api/user',value, { headers }).pipe(tap(_ => console.log("received")));
     }
 
 }
