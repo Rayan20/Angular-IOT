@@ -34,9 +34,9 @@ app.post('/api/user', (req, res) => {
         if (err) {
             console.log(err);
             if (err.code === 'EHOSTUNREACH') {
-                return res.send("500");
+                return res.send("LCD may not be online");
             } else {
-                return res.send("500");
+                return res.send("LCD may not be online");
 
             }
         } else {

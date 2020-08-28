@@ -29,11 +29,7 @@ export class AppComponent implements OnDestroy {
         console.log(value);
         this.appService.sendMSG(value).pipe(takeUntil(this.destroy$)).subscribe(data => {
             console.log('message:', data);
-            if (data === '500') {
-                this.message = "LCD may not be online";
-            } else {
-                this.message = data
-            }
+            this.message = data;
             this.userForm.reset();
         });
     }

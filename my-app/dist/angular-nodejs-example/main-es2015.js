@@ -98,12 +98,7 @@ class AppComponent {
         console.log(value);
         this.appService.sendMSG(value).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["takeUntil"])(this.destroy$)).subscribe(data => {
             console.log('message:', data);
-            if (JSON.parse(data) === 500) {
-                this.message = "LCD may not be online";
-            }
-            else {
-                this.message = "LCD updated";
-            }
+            this.message = data;
             this.userForm.reset();
         });
     }

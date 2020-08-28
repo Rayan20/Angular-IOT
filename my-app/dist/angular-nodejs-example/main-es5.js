@@ -187,12 +187,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           console.log(value);
           this.appService.sendMSG(value).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["takeUntil"])(this.destroy$)).subscribe(function (data) {
             console.log('message:', data);
-
-            if (JSON.parse(data) === 500) {
-              _this.message = "LCD may not be online";
-            } else {
-              _this.message = "LCD updated";
-            }
+            _this.message = data;
 
             _this.userForm.reset();
           });
