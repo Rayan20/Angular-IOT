@@ -246,7 +246,7 @@ class AppService {
     }
     sendMSG(value) {
         console.log(value);
-        const headers = { 'Content-Type': 'text' };
+        const headers = { 'Content-Type': 'application/json', responseType: 'json' };
         return this.http.post('/api/user', value, { headers });
     }
 }
