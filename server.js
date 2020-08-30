@@ -1,6 +1,6 @@
 const express = require('express');
 var request = require('request');
-const pool = require('../db');
+const pool = require('./db');
 
 global.clientIP = '1';
 var monitor;
