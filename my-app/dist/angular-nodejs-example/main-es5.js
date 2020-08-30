@@ -185,12 +185,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             if (data) {
               _this.message = data.message;
 
-              _this.userForm.reset();
+              if (data.message === 'LCD may not be online') {
+                _this.userForm.reset();
+              } else {
+                _this.appService.add_data(value).subscribe(function (output) {});
+
+                _this.userForm.reset();
+              }
             } else {
               console.log('data is null');
             }
-
-            _this.appService.add_data(value).subscribe(function (output) {});
           });
         }
       }, {

@@ -98,13 +98,18 @@ class AppComponent {
             console.log('message:' + JSON.stringify(data));
             if (data) {
                 this.message = data.message;
-                this.userForm.reset();
+                if (data.message === 'LCD may not be online') {
+                    this.userForm.reset();
+                }
+                else {
+                    this.appService.add_data(value).subscribe(output => {
+                    });
+                    this.userForm.reset();
+                }
             }
             else {
                 console.log('data is null');
             }
-            this.appService.add_data(value).subscribe(output => {
-            });
         });
     }
     querySearch() {

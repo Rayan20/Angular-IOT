@@ -1,5 +1,7 @@
 const express = require('express');
 var request = require('request');
+const pool = require('../db');
+
 global.clientIP = '1';
 var monitor;
 const app = express(),
@@ -61,7 +63,7 @@ app.get('/api/query', (req, res) => {
 
             console.log(search);
 
-            return res.render('search', {"data": search});
+            return res.send({"data": search});
 
         })
     })
