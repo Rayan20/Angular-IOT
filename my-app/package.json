@@ -29,6 +29,8 @@
     "ngrx-store-freeze": "^0.2.4",
     "ngrx-store-localstorage": "^9.0.0",
     "ngx-bootstrap": "^5.5.0",
+    "pg": "^8.3.3",
+    "postgres": "^1.0.2",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"

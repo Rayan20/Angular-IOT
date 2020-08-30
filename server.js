@@ -16,6 +16,57 @@ app.get('/api/users', (req, res) => {
     res.json(users);
 });
 
+app.get('/api/add_data', (req, res) => {
+    var message = req.body;
+    const addData = {
+        name: 'addWeather',
+        text: 'INSERT INTO test.search(history) VALUES($1) RETURNING *',
+        values: [message]
+    };
+    pool.connect((err, client, release) => {
+        if (err) {
+            console.log(err);
+        }
+        client.query(addData, (err, res) => {
+            release();
+            if (err) {
+                console.error("error in addData " + err.stack);
+            }
+        })
+    })
+});
+
+app.get('/api/query', (req, res) => {
+    var search = [];
+    const getData = {
+        name: 'get10',
+        text: 'SELECT * FROM test.search ORDER BY datetime DESC LIMIT 10'
+    };
+    pool.connect((err, client, release) => {
+        release();
+        if (err) {
+            console.log(err);
+            res.send("error");
+        }
+        client.query(getData, async (err, result) => {
+
+            if (err) {
+                return console.log(err);
+            }
+
+            for (let row in result.rows) {
+                var history = result.rows[row];
+                search.push(history);
+            }
+
+            console.log(search);
+
+            return res.render('search', {"data": search});
+
+        })
+    })
+});
+
 app.post('/api/user', (req, res) => {
     console.log("/api/user post got hit");
     monitor = req.body;
@@ -30,14 +81,14 @@ app.post('/api/user', (req, res) => {
         timeout: 5000
 
     }, function (err, response) {
-        res.header('Access-Control-Allow-Origin','*');
+        res.header('Access-Control-Allow-Origin', '*');
         res.header("Content-Type", "application/json");
         if (err) {
             console.log(err);
             if (err.code === 'EHOSTUNREACH') {
-                return res.send({"message":"LCD may not be online"});
+                return res.send({"message": "LCD may not be online"});
             } else {
-                return res.send({"message":"LCD may not be online"});
+                return res.send({"message": "LCD may not be online"});
 
             }
         } else {
@@ -45,7 +96,7 @@ app.post('/api/user', (req, res) => {
             if (response.statusCode == 200) {
                 console.log("status code=" + response.statusCode);
                 console.log("status code=" + response.statusMessage);
-                return res.send({"message":"LCD is updated"});
+                return res.send({"message": "LCD is updated"});
 
             } else if (response.statusCode !== 200) {
                 console.log("non 200 status code=" + response.statusCode);

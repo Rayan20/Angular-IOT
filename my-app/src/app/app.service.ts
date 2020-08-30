@@ -19,5 +19,16 @@ export class AppService {
         return this.http.post<any>('/api/user', JSON.stringify(value), httpOptions);
         //return this.http.post<any>('/api/user',value, { headers }).pipe(tap(_ => console.log("received")));
     }
+    query(){
+        return this.http.get<any>('api/query');
+    }
+    add_data(value: any){
+        const httpOptions = {
+            headers: new HttpHeaders({
+                "Content-Type": "application/json"
+            })
+        };
+        return this.http.post<any>('api/add_data', JSON.stringify(value), httpOptions);
+    }
 
 }

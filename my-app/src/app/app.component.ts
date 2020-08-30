@@ -1,9 +1,9 @@
-import {Component, OnDestroy} from '@angular/core';
+import {Component} from '@angular/core';
 // @ts-ignore
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {AppService} from './app.service';
-import {takeUntil} from 'rxjs/operators';
 import {Subject} from 'rxjs';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Component({
     selector: 'app-root',
@@ -29,24 +29,33 @@ export class AppComponent {
         console.log(value);
         this.appService.sendMSG(value).subscribe(data => {
             console.log('message:' + JSON.stringify(data));
-            if(data) {
+            if (data) {
                 this.message = data.message;
                 this.userForm.reset();
-            }
-            else{
+            } else {
                 console.log('data is null');
             }
+            this.appService.add_data(value).subscribe(output => {
+            })
         });
-        //this.appService.sendMSG(value);
-
     }
 
-    showAlert() : void {
+    querySearch(): void {
+        this.appService.query().subscribe(data =>{
+            console.log(data);
+            if (data === 'error'){
+                this.message = "Trouble loading database";
+                this.showAlert();
+            }
+        })
+    }
+
+    showAlert(): void {
         if (this.isVisible) {
             return;
         }
         this.isVisible = true;
-        setTimeout(()=> this.isVisible = false,2500)
+        setTimeout(() => this.isVisible = false, 2500)
     }
 
     // ngOnDestroy() {
