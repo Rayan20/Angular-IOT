@@ -76,7 +76,7 @@ app.post('/api/user', (req, res) => {
     console.log(message);
 
     request.post({
-        url: 'http://' + '192.168.1.129' + ':8080/lcd_print',
+        url: 'http://' + clientIP + ':8080/lcd_print',
         json: {
             message: message
         },
