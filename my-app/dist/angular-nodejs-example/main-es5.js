@@ -205,7 +205,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           var _this2 = this;
 
           this.appService.query().subscribe(function (data) {
-            console.log(data);
+            console.log(data.data);
 
             if (data === 'error') {
               _this2.message = "Trouble loading database";

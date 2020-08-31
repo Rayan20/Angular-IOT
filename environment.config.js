@@ -20,6 +20,14 @@ module.exports = {
         database: "d5b73v5prj475i",
         debug: true,
     },
+    // db: {
+    //     host: "localhost",
+    //     user: "root",
+    //     password: "password",
+    //     port: "5432",
+    //     database: "web",
+    //     debug: false,
+    // },
 
 
 };

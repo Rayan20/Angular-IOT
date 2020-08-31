@@ -49,7 +49,7 @@ querySearch()
 :
 void {
     this.appService.query().subscribe(data => {
-        console.log(data);
+        console.log(data.data);
         if (data === 'error') {
             this.message = "Trouble loading database";
             this.showAlert();

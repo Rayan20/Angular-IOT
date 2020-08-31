@@ -19,7 +19,7 @@ app.get('/api/users', (req, res) => {
 });
 
 app.post('/api/add_data', (req, res) => {
-    var message = req.body;
+    var message = req.body.monitor;
     const addData = {
         name: 'addWeather',
         text: 'INSERT INTO test.search(history) VALUES($1) RETURNING *',
@@ -42,7 +42,7 @@ app.get('/api/query', (req, res) => {
     var search = [];
     const getData = {
         name: 'get10',
-        text: 'SELECT * FROM test.search ORDER BY datetime DESC LIMIT 10'
+        text: 'SELECT * FROM test.search ORDER BY id DESC LIMIT 10'
     };
     pool.connect((err, client, release) => {
         release();
@@ -76,7 +76,7 @@ app.post('/api/user', (req, res) => {
     console.log(message);
 
     request.post({
-        url: 'http://' + clientIP + ':8080/lcd_print',
+        url: 'http://' + '192.168.1.129' + ':8080/lcd_print',
         json: {
             message: message
         },
