@@ -65,7 +65,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
     /*! @angular/router */
-    "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
+    "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js"); // @ts-ignore
+
 
     var routes = [];
 
@@ -177,7 +178,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     var _users_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
     /*! ./users.component */
-    "./src/app/users.component.ts");
+    "./src/app/users.component.ts"); // @ts-ignore
+    // @ts-ignore
+
 
     function AppComponent_app_users_26_Template(rf, ctx) {
       if (rf & 1) {
@@ -1116,7 +1119,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   /***/
   function _(module, exports, __webpack_require__) {
     module.exports = __webpack_require__(
-    /*! /Users/bhargavbachina/Projects/angular-nodejs-example/my-app/src/main.ts */
+    /*! /Users/yangju/projects/training/Angular-IOT/my-app/src/main.ts */
     "./src/main.ts");
     /***/
   }

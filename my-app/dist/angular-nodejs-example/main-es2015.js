@@ -35,6 +35,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppRoutingModule", function() { return AppRoutingModule; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
+// @ts-ignore
 
 
 
@@ -76,7 +77,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _display_board_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./display-board.component */ "./src/app/display-board.component.ts");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
 /* harmony import */ var _users_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./users.component */ "./src/app/users.component.ts");
+// @ts-ignore
 
+// @ts-ignore
 
 
 
@@ -566,7 +569,7 @@ _angular_platform_browser__WEBPACK_IMPORTED_MODULE_3__["platformBrowser"]().boot
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/bhargavbachina/Projects/angular-nodejs-example/my-app/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /Users/yangju/projects/training/Angular-IOT/my-app/src/main.ts */"./src/main.ts");
 
 
 /***/ })
