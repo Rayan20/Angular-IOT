@@ -13,12 +13,12 @@ module.exports = {
         enableCluster: false
     },
     db: {
-        host: "ec2-107-20-15-85.compute-1.amazonaws.com\n",
+        host: "ec2-107-20-15-85.compute-1.amazonaws.com",
         user: "ltzokpmatnuwuj",
-        password: "46ae6289cef9041f1e96196480c53073d6334b94e31c75e5d2f50ab324e0a0eb\n",
+        password: "46ae6289cef9041f1e96196480c53073d6334b94e31c75e5d2f50ab324e0a0eb",
         port: "5432",
         database: "d5b73v5prj475i",
-        debug: false,
+        debug: true,
     },
 
 
