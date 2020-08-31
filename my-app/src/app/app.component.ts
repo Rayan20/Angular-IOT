@@ -1,51 +1,75 @@
+import {Component} from '@angular/core';
 // @ts-ignore
-import { Component, OnDestroy } from '@angular/core';
-// @ts-ignore
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { AppService } from './app.service';
-import { takeUntil } from 'rxjs/operators';
-import { Subject } from 'rxjs';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {AppService} from './app.service';
+import {Subject} from 'rxjs';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnDestroy {
+export class AppComponent {
 
-  constructor(private appService: AppService) {}
+    constructor(private appService: AppService) {
+    }
 
-  title = 'angular-nodejs-example';
+    title = 'angular-iot';
+    message = '';
+    public isVisible: boolean = false;
 
-  userForm = new FormGroup({
-    firstName: new FormControl('', Validators.nullValidator && Validators.required),
-    lastName: new FormControl('', Validators.nullValidator && Validators.required),
-    email: new FormControl('', Validators.nullValidator && Validators.required)
-  });
-
-  users: any[] = [];
-  userCount = 0;
-
-  destroy$: Subject<boolean> = new Subject<boolean>();
-
-  onSubmit() {
-
-    this.appService.addUser(this.userForm.value).pipe(takeUntil(this.destroy$)).subscribe(data => {
-      console.log('message::::', data);
-      this.userCount = this.userCount + 1;
-      console.log(this.userCount);
-      this.userForm.reset();
+    userForm = new FormGroup({
+        monitor: new FormControl('', Validators.nullValidator && Validators.required),
     });
-  }
 
-  getAllUsers() {
-    this.appService.getUsers().pipe(takeUntil(this.destroy$)).subscribe((users: any[]) => {
-        this.users = users;
-    });
-  }
+    destroy$: Subject<boolean> = new Subject<boolean>();
 
-  ngOnDestroy() {
-    this.destroy$.next(true);
-    this.destroy$.unsubscribe();
-  }
+    onSubmit(value) {
+        console.log(value);
+        this.appService.sendMSG(value).subscribe(data => {
+            console.log('message:' + JSON.stringify(data));
+            if (data) {
+                this.message = data.message;
+                if (data.message === 'LCD may not be online') {
+                    this.userForm.reset();
+                } else {
+                    this.appService.add_data(value).subscribe(output => {
+                    });
+                    this.userForm.reset();
+                }
+            } else {
+                console.log('data is null');
+            }
+        })
+    }
+
+
+querySearch()
+:
+void {
+    this.appService.query().subscribe(data => {
+        console.log(data);
+        if (data === 'error') {
+            this.message = "Trouble loading database";
+            this.showAlert();
+        }
+    })
+}
+
+showAlert()
+:
+void {
+    if(this.isVisible
+)
+{
+    return;
+}
+this.isVisible = true;
+setTimeout(() => this.isVisible = false, 2500)
+}
+
+// ngOnDestroy() {
+//     this.destroy$.next(true);
+//     this.destroy$.unsubscribe();
+// }
 }
