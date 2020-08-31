@@ -8,9 +8,10 @@ module.exports = {
     //   'pg-native': './donotdelete.js',
     // 'dns': './donotdelete.js'
     // },
-    plugins: [
-        new webpack.IgnorePlugin(/^pg-native$/)
-    ],
+    alias: {
+        'pg-native': path.join(__dirname, 'pg-native.js'),
+        'pgpass$': path.join(__dirname, 'pgpass.js'),
+    },
   output: {
     path: path.resolve(__dirname, '.'),
     filename: 'server.bundle.js'
