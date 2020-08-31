@@ -32,6 +32,7 @@ export class AppComponent {
                 this.message = data.message;
                 if (data.message === 'LCD may not be online') {
                     this.userForm.reset();
+                    console.log('reset');
                 } else {
                     this.appService.add_data(value).subscribe(output => {
                     });

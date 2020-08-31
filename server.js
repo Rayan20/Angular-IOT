@@ -18,7 +18,7 @@ app.get('/api/users', (req, res) => {
     res.json(users);
 });
 
-app.get('/api/add_data', (req, res) => {
+app.post('/api/add_data', (req, res) => {
     var message = req.body;
     const addData = {
         name: 'addWeather',

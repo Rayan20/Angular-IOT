@@ -187,6 +187,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
               if (data.message === 'LCD may not be online') {
                 _this.userForm.reset();
+
+                console.log('reset');
               } else {
                 _this.appService.add_data(value).subscribe(function (output) {});
 
@@ -323,7 +325,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
       },
       directives: [_header_header_component__WEBPACK_IMPORTED_MODULE_4__["HeaderComponent"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["ɵangular_packages_forms_forms_y"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormGroupDirective"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControlName"]],
-      styles: [".alert[_ngcontent-%COMP%]  {\n    position: center;\n    top: 0;\n    border:1px solid rgba(0, 0, 0, 0.2);\n    border-radius: 0.25rem;\n    padding: 2rem;\n    background: #fff;\n    color: #f65656;\n    box-shadow: 0 5px 10px -5px rgba(0, 0, 0, 0.5);\n    -webkit-transition:  all 0.2s ease-in-out;\n    transition:  all 0.2s ease-in-out;\n    opacity: 0;\n}\n\n.visible[_ngcontent-%COMP%] {\n    opacity: 1;\n    -webkit-transform: translateY(1.25rem);\n            transform: translateY(1.25rem);\n}\n\n.third[_ngcontent-%COMP%] {\n    border-color: gray;\n    color: white;\n    box-shadow: 0 0 40px 40px gray inset, 0 0 0 0 gray;\n    -webkit-transition: all 150ms ease-in-out;\n    transition: all 150ms ease-in-out;\n}\n\n.third[_ngcontent-%COMP%]:hover {\n    box-shadow: 0 0 10px 0 #3498db inset, 0 0 10px 4px #3498db;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXBwLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxnQkFBZ0I7SUFDaEIsTUFBTTtJQUNOLG1DQUFtQztJQUNuQyxzQkFBc0I7SUFDdEIsYUFBYTtJQUNiLGdCQUFnQjtJQUNoQixjQUFjO0lBQ2QsOENBQThDO0lBQzlDLHlDQUFpQztJQUFqQyxpQ0FBaUM7SUFDakMsVUFBVTtBQUNkOztBQUVBO0lBQ0ksVUFBVTtJQUNWLHNDQUE4QjtZQUE5Qiw4QkFBOEI7QUFDbEM7O0FBRUE7SUFDSSxrQkFBa0I7SUFDbEIsWUFBWTtJQUNaLGtEQUFrRDtJQUNsRCx5Q0FBeUM7SUFDekMsaUNBQWlDO0FBQ3JDOztBQUVBO0lBQ0ksMERBQTBEO0FBQzlEIiwiZmlsZSI6InNyYy9hcHAvYXBwLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuYWxlcnQgIHtcbiAgICBwb3NpdGlvbjogY2VudGVyO1xuICAgIHRvcDogMDtcbiAgICBib3JkZXI6MXB4IHNvbGlkIHJnYmEoMCwgMCwgMCwgMC4yKTtcbiAgICBib3JkZXItcmFkaXVzOiAwLjI1cmVtO1xuICAgIHBhZGRpbmc6IDJyZW07XG4gICAgYmFja2dyb3VuZDogI2ZmZjtcbiAgICBjb2xvcjogI2Y2NTY1NjtcbiAgICBib3gtc2hhZG93OiAwIDVweCAxMHB4IC01cHggcmdiYSgwLCAwLCAwLCAwLjUpO1xuICAgIHRyYW5zaXRpb246ICBhbGwgMC4ycyBlYXNlLWluLW91dDtcbiAgICBvcGFjaXR5OiAwO1xufVxuXG4udmlzaWJsZSB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMS4yNXJlbSk7XG59XG5cbi50aGlyZCB7XG4gICAgYm9yZGVyLWNvbG9yOiBncmF5O1xuICAgIGNvbG9yOiB3aGl0ZTtcbiAgICBib3gtc2hhZG93OiAwIDAgNDBweCA0MHB4IGdyYXkgaW5zZXQsIDAgMCAwIDAgZ3JheTtcbiAgICAtd2Via2l0LXRyYW5zaXRpb246IGFsbCAxNTBtcyBlYXNlLWluLW91dDtcbiAgICB0cmFuc2l0aW9uOiBhbGwgMTUwbXMgZWFzZS1pbi1vdXQ7XG59XG5cbi50aGlyZDpob3ZlciB7XG4gICAgYm94LXNoYWRvdzogMCAwIDEwcHggMCAjMzQ5OGRiIGluc2V0LCAwIDAgMTBweCA0cHggIzM0OThkYjtcbn1cblxuIl19 */"]
+      styles: [".alert[_ngcontent-%COMP%]  {\n    position: center;\n    top: 0;\n    border:1px solid rgba(0, 0, 0, 0.2);\n    border-radius: 0.25rem;\n    padding: 2rem;\n    background: #fff;\n    color: #f65656;\n    box-shadow: 0 5px 10px -5px rgba(0, 0, 0, 0.5);\n    transition:  all 0.2s ease-in-out;\n    opacity: 0;\n}\n\n.visible[_ngcontent-%COMP%] {\n    opacity: 1;\n    transform: translateY(1.25rem);\n}\n\n.third[_ngcontent-%COMP%] {\n    border-color: gray;\n    color: white;\n    box-shadow: 0 0 40px 40px gray inset, 0 0 0 0 gray;\n    transition: all 150ms ease-in-out;\n}\n\n.third[_ngcontent-%COMP%]:hover {\n    box-shadow: 0 0 10px 0 #3498db inset, 0 0 10px 4px #3498db;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXBwLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxnQkFBZ0I7SUFDaEIsTUFBTTtJQUNOLG1DQUFtQztJQUNuQyxzQkFBc0I7SUFDdEIsYUFBYTtJQUNiLGdCQUFnQjtJQUNoQixjQUFjO0lBQ2QsOENBQThDO0lBQzlDLGlDQUFpQztJQUNqQyxVQUFVO0FBQ2Q7O0FBRUE7SUFDSSxVQUFVO0lBQ1YsOEJBQThCO0FBQ2xDOztBQUVBO0lBQ0ksa0JBQWtCO0lBQ2xCLFlBQVk7SUFDWixrREFBa0Q7SUFFbEQsaUNBQWlDO0FBQ3JDOztBQUVBO0lBQ0ksMERBQTBEO0FBQzlEIiwiZmlsZSI6InNyYy9hcHAvYXBwLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuYWxlcnQgIHtcbiAgICBwb3NpdGlvbjogY2VudGVyO1xuICAgIHRvcDogMDtcbiAgICBib3JkZXI6MXB4IHNvbGlkIHJnYmEoMCwgMCwgMCwgMC4yKTtcbiAgICBib3JkZXItcmFkaXVzOiAwLjI1cmVtO1xuICAgIHBhZGRpbmc6IDJyZW07XG4gICAgYmFja2dyb3VuZDogI2ZmZjtcbiAgICBjb2xvcjogI2Y2NTY1NjtcbiAgICBib3gtc2hhZG93OiAwIDVweCAxMHB4IC01cHggcmdiYSgwLCAwLCAwLCAwLjUpO1xuICAgIHRyYW5zaXRpb246ICBhbGwgMC4ycyBlYXNlLWluLW91dDtcbiAgICBvcGFjaXR5OiAwO1xufVxuXG4udmlzaWJsZSB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMS4yNXJlbSk7XG59XG5cbi50aGlyZCB7XG4gICAgYm9yZGVyLWNvbG9yOiBncmF5O1xuICAgIGNvbG9yOiB3aGl0ZTtcbiAgICBib3gtc2hhZG93OiAwIDAgNDBweCA0MHB4IGdyYXkgaW5zZXQsIDAgMCAwIDAgZ3JheTtcbiAgICAtd2Via2l0LXRyYW5zaXRpb246IGFsbCAxNTBtcyBlYXNlLWluLW91dDtcbiAgICB0cmFuc2l0aW9uOiBhbGwgMTUwbXMgZWFzZS1pbi1vdXQ7XG59XG5cbi50aGlyZDpob3ZlciB7XG4gICAgYm94LXNoYWRvdzogMCAwIDEwcHggMCAjMzQ5OGRiIGluc2V0LCAwIDAgMTBweCA0cHggIzM0OThkYjtcbn1cblxuIl19 */"]
     });
     /*@__PURE__*/
 
@@ -503,12 +505,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               "Content-Type": "application/json"
             })
           };
-          return this.http.post('/api/user', JSON.stringify(value), httpOptions); //return this.http.post<any>('/api/user',value, { headers }).pipe(tap(_ => console.log("received")));
+          return this.http.post('/api/user', JSON.stringify(value), httpOptions);
         }
       }, {
         key: "query",
         value: function query() {
-          return this.http.get('api/query');
+          return this.http.get('/api/query');
         }
       }, {
         key: "add_data",
@@ -518,7 +520,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               "Content-Type": "application/json"
             })
           };
-          return this.http.post('api/add_data', JSON.stringify(value), httpOptions);
+          return this.http.post('/api/add_data', JSON.stringify(value), httpOptions);
         }
       }]);
 
@@ -635,7 +637,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         }
       },
-      styles: [".header[_ngcontent-%COMP%] {\n  width: 100%;\n  padding: 1%;\n  background-color: rebeccapurple;\n  color: white;\n}\n\n.third[_ngcontent-%COMP%] {\n    border-color: #3498db;\n    color: #fff;\n    box-shadow: 0 0 40px 40px #3498db inset, 0 0 0 0 #3498db;\n    -webkit-transition: all 150ms ease-in-out;\n    transition: all 150ms ease-in-out;\n}\n\n.third[_ngcontent-%COMP%]:hover {\n    box-shadow: 0 0 10px 0 #3498db inset, 0 0 10px 4px #3498db;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaGVhZGVyL2hlYWRlci5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsV0FBVztFQUNYLFdBQVc7RUFDWCwrQkFBK0I7RUFDL0IsWUFBWTtBQUNkOztBQUVBO0lBQ0kscUJBQXFCO0lBQ3JCLFdBQVc7SUFDWCx3REFBd0Q7SUFDeEQseUNBQXlDO0lBQ3pDLGlDQUFpQztBQUNyQzs7QUFFQTtJQUNJLDBEQUEwRDtBQUM5RCIsImZpbGUiOiJzcmMvYXBwL2hlYWRlci9oZWFkZXIuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5oZWFkZXIge1xuICB3aWR0aDogMTAwJTtcbiAgcGFkZGluZzogMSU7XG4gIGJhY2tncm91bmQtY29sb3I6IHJlYmVjY2FwdXJwbGU7XG4gIGNvbG9yOiB3aGl0ZTtcbn1cblxuLnRoaXJkIHtcbiAgICBib3JkZXItY29sb3I6ICMzNDk4ZGI7XG4gICAgY29sb3I6ICNmZmY7XG4gICAgYm94LXNoYWRvdzogMCAwIDQwcHggNDBweCAjMzQ5OGRiIGluc2V0LCAwIDAgMCAwICMzNDk4ZGI7XG4gICAgLXdlYmtpdC10cmFuc2l0aW9uOiBhbGwgMTUwbXMgZWFzZS1pbi1vdXQ7XG4gICAgdHJhbnNpdGlvbjogYWxsIDE1MG1zIGVhc2UtaW4tb3V0O1xufVxuXG4udGhpcmQ6aG92ZXIge1xuICAgIGJveC1zaGFkb3c6IDAgMCAxMHB4IDAgIzM0OThkYiBpbnNldCwgMCAwIDEwcHggNHB4ICMzNDk4ZGI7XG59XG4iXX0= */"]
+      styles: [".header[_ngcontent-%COMP%] {\n  width: 100%;\n  padding: 1%;\n  background-color: rebeccapurple;\n  color: white;\n}\n\n.third[_ngcontent-%COMP%] {\n    border-color: #3498db;\n    color: #fff;\n    box-shadow: 0 0 40px 40px #3498db inset, 0 0 0 0 #3498db;\n    transition: all 150ms ease-in-out;\n}\n\n.third[_ngcontent-%COMP%]:hover {\n    box-shadow: 0 0 10px 0 #3498db inset, 0 0 10px 4px #3498db;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaGVhZGVyL2hlYWRlci5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsV0FBVztFQUNYLFdBQVc7RUFDWCwrQkFBK0I7RUFDL0IsWUFBWTtBQUNkOztBQUVBO0lBQ0kscUJBQXFCO0lBQ3JCLFdBQVc7SUFDWCx3REFBd0Q7SUFFeEQsaUNBQWlDO0FBQ3JDOztBQUVBO0lBQ0ksMERBQTBEO0FBQzlEIiwiZmlsZSI6InNyYy9hcHAvaGVhZGVyL2hlYWRlci5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmhlYWRlciB7XG4gIHdpZHRoOiAxMDAlO1xuICBwYWRkaW5nOiAxJTtcbiAgYmFja2dyb3VuZC1jb2xvcjogcmViZWNjYXB1cnBsZTtcbiAgY29sb3I6IHdoaXRlO1xufVxuXG4udGhpcmQge1xuICAgIGJvcmRlci1jb2xvcjogIzM0OThkYjtcbiAgICBjb2xvcjogI2ZmZjtcbiAgICBib3gtc2hhZG93OiAwIDAgNDBweCA0MHB4ICMzNDk4ZGIgaW5zZXQsIDAgMCAwIDAgIzM0OThkYjtcbiAgICAtd2Via2l0LXRyYW5zaXRpb246IGFsbCAxNTBtcyBlYXNlLWluLW91dDtcbiAgICB0cmFuc2l0aW9uOiBhbGwgMTUwbXMgZWFzZS1pbi1vdXQ7XG59XG5cbi50aGlyZDpob3ZlciB7XG4gICAgYm94LXNoYWRvdzogMCAwIDEwcHggMCAjMzQ5OGRiIGluc2V0LCAwIDAgMTBweCA0cHggIzM0OThkYjtcbn1cbiJdfQ== */"]
     });
     /*@__PURE__*/
 
@@ -735,7 +737,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["enableProdMode"])();
     }
 
-    _angular_platform_browser__WEBPACK_IMPORTED_MODULE_3__["platformBrowser"]().bootstrapModule(_app_app_module__WEBPACK_IMPORTED_MODULE_2__["AppModule"]).catch(function (err) {
+    _angular_platform_browser__WEBPACK_IMPORTED_MODULE_3__["platformBrowser"]().bootstrapModule(_app_app_module__WEBPACK_IMPORTED_MODULE_2__["AppModule"])["catch"](function (err) {
       return console.error(err);
     });
     /***/
@@ -753,7 +755,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   /***/
   function _(module, exports, __webpack_require__) {
     module.exports = __webpack_require__(
-    /*! /Users/yangju/projects/training/Angular-IOT/my-app/src/main.ts */
+    /*! /Users/yangju/projects/bitbucket/Angular-IOT/my-app/src/main.ts */
     "./src/main.ts");
     /***/
   }
