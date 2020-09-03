@@ -16,6 +16,7 @@ export class AppComponent {
 
     title = 'angular-iot';
     message = '';
+    history_data;
     public isVisible: boolean = false;
 
     userForm = new FormGroup({
@@ -32,7 +33,6 @@ export class AppComponent {
                 this.message = data.message;
                 if (data.message === 'LCD may not be online') {
                     this.userForm.reset();
-                    console.log('reset');
                 } else {
                     this.appService.add_data(value).subscribe(output => {
                     });
@@ -45,32 +45,33 @@ export class AppComponent {
     }
 
 
-querySearch()
-:
-void {
-    this.appService.query().subscribe(data => {
-        console.log(data.data);
-        if (data === 'error') {
-            this.message = "Trouble loading database";
-            this.showAlert();
+    querySearch()
+        :
+        void {
+        this.appService.query().subscribe(data => {
+            console.log(JSON.stringify(data.data));
+            var store = [];
+            for (var i = 0; i < data.data.length; i++){
+                store.push(data.data[i].history);
+                console.log(store);
+            }
+                this.history_data = store;
+            if (data === 'error') {
+                this.message = "Trouble loading database";
+                this.showAlert();
+            }
+        })
+    }
+
+    showAlert()
+        :
+        void {
+        if (this.isVisible
+        ) {
+            return;
         }
-    })
-}
+        this.isVisible = true;
+        setTimeout(() => this.isVisible = false, 2500)
+    }
 
-showAlert()
-:
-void {
-    if(this.isVisible
-)
-{
-    return;
-}
-this.isVisible = true;
-setTimeout(() => this.isVisible = false, 2500)
-}
-
-// ngOnDestroy() {
-//     this.destroy$.next(true);
-//     this.destroy$.unsubscribe();
-// }
 }

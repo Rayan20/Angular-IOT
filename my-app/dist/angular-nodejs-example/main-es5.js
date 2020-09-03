@@ -187,8 +187,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
               if (data.message === 'LCD may not be online') {
                 _this.userForm.reset();
-
-                console.log('reset');
               } else {
                 _this.appService.add_data(value).subscribe(function (output) {});
 
@@ -205,7 +203,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           var _this2 = this;
 
           this.appService.query().subscribe(function (data) {
-            console.log(data.data);
+            console.log(JSON.stringify(data.data));
+            var store = [];
+
+            for (var i = 0; i < data.data.length; i++) {
+              store.push(data.data[i].history);
+              console.log(store);
+            }
+
+            _this2.history_data = store;
 
             if (data === 'error') {
               _this2.message = "Trouble loading database";
@@ -240,9 +246,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     AppComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
       type: AppComponent,
       selectors: [["app-root"]],
-      decls: 16,
-      vars: 5,
-      consts: [[1, "container", "text-center"], [1, "alert"], ["required", "", 3, "formGroup", "ngSubmit"], [1, "form-group"], ["for", "monitor"], ["type", "text", "name", "monitor", "formControlName", "monitor", "id", "monitor", "placeholder", "Type your message here!", 1, "form-control", 2, "border", "black solid 2px"], ["type", "submit", 1, "btn", "btn-danger", 3, "disabled", "click"], [1, "btn", "third", 3, "click"]],
+      decls: 18,
+      vars: 6,
+      consts: [[1, "container", "text-center"], [1, "alert"], ["required", "", 3, "formGroup", "ngSubmit"], [1, "form-group"], ["for", "monitor"], ["type", "text", "name", "monitor", "formControlName", "monitor", "id", "monitor", "placeholder", "Type your message here!", 1, "form-control", 2, "border", "black solid 2px"], ["type", "submit", 1, "btn", "btn-danger", 3, "disabled", "click"], [1, "btn", "third", 3, "click"], ["id", "history"]],
       template: function AppComponent_Template(rf, ctx) {
         if (rf & 1) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "app-header");
@@ -301,6 +307,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](16, "div", 8);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](17);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -322,6 +334,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("disabled", !ctx.userForm.valid);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.history_data);
         }
       },
       directives: [_header_header_component__WEBPACK_IMPORTED_MODULE_4__["HeaderComponent"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["ɵangular_packages_forms_forms_y"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormGroupDirective"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControlName"]],

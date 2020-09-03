@@ -100,7 +100,6 @@ class AppComponent {
                 this.message = data.message;
                 if (data.message === 'LCD may not be online') {
                     this.userForm.reset();
-                    console.log('reset');
                 }
                 else {
                     this.appService.add_data(value).subscribe(output => {
@@ -115,7 +114,13 @@ class AppComponent {
     }
     querySearch() {
         this.appService.query().subscribe(data => {
-            console.log(data.data);
+            console.log(JSON.stringify(data.data));
+            var store = [];
+            for (var i = 0; i < data.data.length; i++) {
+                store.push(data.data[i].history);
+                console.log(store);
+            }
+            this.history_data = store;
             if (data === 'error') {
                 this.message = "Trouble loading database";
                 this.showAlert();
@@ -131,7 +136,7 @@ class AppComponent {
     }
 }
 AppComponent.ɵfac = function AppComponent_Factory(t) { return new (t || AppComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_app_service__WEBPACK_IMPORTED_MODULE_3__["AppService"])); };
-AppComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: AppComponent, selectors: [["app-root"]], decls: 16, vars: 5, consts: [[1, "container", "text-center"], [1, "alert"], ["required", "", 3, "formGroup", "ngSubmit"], [1, "form-group"], ["for", "monitor"], ["type", "text", "name", "monitor", "formControlName", "monitor", "id", "monitor", "placeholder", "Type your message here!", 1, "form-control", 2, "border", "black solid 2px"], ["type", "submit", 1, "btn", "btn-danger", 3, "disabled", "click"], [1, "btn", "third", 3, "click"]], template: function AppComponent_Template(rf, ctx) { if (rf & 1) {
+AppComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: AppComponent, selectors: [["app-root"]], decls: 18, vars: 6, consts: [[1, "container", "text-center"], [1, "alert"], ["required", "", 3, "formGroup", "ngSubmit"], [1, "form-group"], ["for", "monitor"], ["type", "text", "name", "monitor", "formControlName", "monitor", "id", "monitor", "placeholder", "Type your message here!", 1, "form-control", 2, "border", "black solid 2px"], ["type", "submit", 1, "btn", "btn-danger", 3, "disabled", "click"], [1, "btn", "third", 3, "click"], ["id", "history"]], template: function AppComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "app-header");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "body");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 0);
@@ -157,6 +162,9 @@ AppComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineCompo
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function AppComponent_Template_button_click_14_listener() { return ctx.querySearch(); });
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](15, "Show recent searches");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](16, "div", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](17);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     } if (rf & 2) {
@@ -168,6 +176,8 @@ AppComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineCompo
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("formGroup", ctx.userForm);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("disabled", !ctx.userForm.valid);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.history_data);
     } }, directives: [_header_header_component__WEBPACK_IMPORTED_MODULE_4__["HeaderComponent"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["ɵangular_packages_forms_forms_y"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormGroupDirective"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControlName"]], styles: [".alert[_ngcontent-%COMP%]  {\n    position: center;\n    top: 0;\n    border:1px solid rgba(0, 0, 0, 0.2);\n    border-radius: 0.25rem;\n    padding: 2rem;\n    background: #fff;\n    color: #f65656;\n    box-shadow: 0 5px 10px -5px rgba(0, 0, 0, 0.5);\n    transition:  all 0.2s ease-in-out;\n    opacity: 0;\n}\n\n.visible[_ngcontent-%COMP%] {\n    opacity: 1;\n    transform: translateY(1.25rem);\n}\n\n.third[_ngcontent-%COMP%] {\n    border-color: gray;\n    color: white;\n    box-shadow: 0 0 40px 40px gray inset, 0 0 0 0 gray;\n    transition: all 150ms ease-in-out;\n}\n\n.third[_ngcontent-%COMP%]:hover {\n    box-shadow: 0 0 10px 0 #3498db inset, 0 0 10px 4px #3498db;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXBwLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxnQkFBZ0I7SUFDaEIsTUFBTTtJQUNOLG1DQUFtQztJQUNuQyxzQkFBc0I7SUFDdEIsYUFBYTtJQUNiLGdCQUFnQjtJQUNoQixjQUFjO0lBQ2QsOENBQThDO0lBQzlDLGlDQUFpQztJQUNqQyxVQUFVO0FBQ2Q7O0FBRUE7SUFDSSxVQUFVO0lBQ1YsOEJBQThCO0FBQ2xDOztBQUVBO0lBQ0ksa0JBQWtCO0lBQ2xCLFlBQVk7SUFDWixrREFBa0Q7SUFFbEQsaUNBQWlDO0FBQ3JDOztBQUVBO0lBQ0ksMERBQTBEO0FBQzlEIiwiZmlsZSI6InNyYy9hcHAvYXBwLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuYWxlcnQgIHtcbiAgICBwb3NpdGlvbjogY2VudGVyO1xuICAgIHRvcDogMDtcbiAgICBib3JkZXI6MXB4IHNvbGlkIHJnYmEoMCwgMCwgMCwgMC4yKTtcbiAgICBib3JkZXItcmFkaXVzOiAwLjI1cmVtO1xuICAgIHBhZGRpbmc6IDJyZW07XG4gICAgYmFja2dyb3VuZDogI2ZmZjtcbiAgICBjb2xvcjogI2Y2NTY1NjtcbiAgICBib3gtc2hhZG93OiAwIDVweCAxMHB4IC01cHggcmdiYSgwLCAwLCAwLCAwLjUpO1xuICAgIHRyYW5zaXRpb246ICBhbGwgMC4ycyBlYXNlLWluLW91dDtcbiAgICBvcGFjaXR5OiAwO1xufVxuXG4udmlzaWJsZSB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMS4yNXJlbSk7XG59XG5cbi50aGlyZCB7XG4gICAgYm9yZGVyLWNvbG9yOiBncmF5O1xuICAgIGNvbG9yOiB3aGl0ZTtcbiAgICBib3gtc2hhZG93OiAwIDAgNDBweCA0MHB4IGdyYXkgaW5zZXQsIDAgMCAwIDAgZ3JheTtcbiAgICAtd2Via2l0LXRyYW5zaXRpb246IGFsbCAxNTBtcyBlYXNlLWluLW91dDtcbiAgICB0cmFuc2l0aW9uOiBhbGwgMTUwbXMgZWFzZS1pbi1vdXQ7XG59XG5cbi50aGlyZDpob3ZlciB7XG4gICAgYm94LXNoYWRvdzogMCAwIDEwcHggMCAjMzQ5OGRiIGluc2V0LCAwIDAgMTBweCA0cHggIzM0OThkYjtcbn1cblxuIl19 */"] });
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](AppComponent, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
